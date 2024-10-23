@@ -1,0 +1,67 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+
+# Agrupar as vendas globais por plataforma
+sales_by_platform = df.groupby('Platform')['Global_Sales'].sum().reset_index()
+
+# Plotar gráfico de barras
+plt.figure(figsize=(12, 6))
+sns.barplot(x='Platform', y='Global_Sales', data=sales_by_platform, palette='viridis')
+plt.title('Vendas Globais por Plataforma', fontsize=16)
+plt.xlabel('Plataforma', fontsize=12)
+plt.ylabel('Vendas Globais (em milhões)', fontsize=12)
+plt.xticks(rotation=45)
+plt.show()
+
+
+# Agrupar vendas na América do Norte por plataforma
+na_sales_by_platform = df.groupby('Platform')['NA_Sales'].sum().reset_index()
+
+# Plotar gráfico de barras
+plt.figure(figsize=(12, 6))
+sns.barplot(x='Platform', y='NA_Sales', data=na_sales_by_platform, palette='coolwarm')
+plt.title('Vendas na América do Norte por Plataforma', fontsize=16)
+plt.xlabel('Plataforma', fontsize=12)
+plt.ylabel('Vendas NA (em milhões)', fontsize=12)
+plt.xticks(rotation=45)
+plt.show()
+
+
+# Agrupar vendas na Europa por plataforma
+eu_sales_by_platform = df.groupby('Platform')['EU_Sales'].sum().reset_index()
+
+# Plotar gráfico de barras
+plt.figure(figsize=(12, 6))
+sns.barplot(x='Platform', y='EU_Sales', data=eu_sales_by_platform, palette='Blues')
+plt.title('Vendas na Europa por Plataforma', fontsize=16)
+plt.xlabel('Plataforma', fontsize=12)
+plt.ylabel('Vendas EU (em milhões)', fontsize=12)
+plt.xticks(rotation=45)
+plt.show()
+
+
+# Agrupar vendas no Japão por plataforma
+jp_sales_by_platform = df.groupby('Platform')['JP_Sales'].sum().reset_index()
+
+# Plotar gráfico de barras
+plt.figure(figsize=(12, 6))
+sns.barplot(x='Platform', y='JP_Sales', data=jp_sales_by_platform, palette='rocket')
+plt.title('Vendas no Japão por Plataforma', fontsize=16)
+plt.xlabel('Plataforma', fontsize=12)
+plt.ylabel('Vendas JP (em milhões)', fontsize=12)
+plt.xticks(rotation=45)
+plt.show()
+
+
+# Agrupar vendas em outras regiões por plataforma
+other_sales_by_platform = df.groupby('Platform')['Other_Sales'].sum().reset_index()
+
+# Plotar gráfico de barras
+plt.figure(figsize=(12, 6))
+sns.barplot(x='Platform', y='Other_Sales', data=other_sales_by_platform, palette='magma')
+plt.title('Vendas em Outras Regiões por Plataforma', fontsize=16)
+plt.xlabel('Plataforma', fontsize=12)
+plt.ylabel('Vendas em Outras Regiões (em milhões)', fontsize=12)
+plt.xticks(rotation=45)
+plt.show()

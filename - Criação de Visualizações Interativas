@@ -1,0 +1,25 @@
+import pandas as pd
+
+# Carregando o arquivo CSV
+vg_sales_data = pd.read_csv('vgsales.csv')
+
+# nálise
+vg_sales_data_cleaned = vg_sales_data.dropna(subset=['Year']).copy()
+vg_sales_data_cleaned['Year'] = vg_sales_data_cleaned['Year'].astype(int)
+
+# criação do gráfico interativo usando Plotly
+import plotly.express as px
+
+# Agrupando os dados por ano e somando as vendas
+sales_by_year = vg_sales_data_cleaned.groupby('Year')[['NA_Sales', 'EU_Sales', 'JP_Sales', 'Other_Sales', 'Global_Sales']].sum().reset_index()
+
+# Criando um gráfico de linha interativo
+fig = px.line(
+    sales_by_year, 
+    x='Year', 
+    y=['NA_Sales', 'EU_Sales', 'JP_Sales', 'Other_Sales', 'Global_Sales'],
+    labels={'value': 'Vendas (em milhões)', 'Year': 'Ano', 'variable': 'Região'},
+    title='Evolução das Vendas de Video Games ao Longo do Tempo por Região'
+)
+
+fig.show()
